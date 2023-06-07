@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class Segregation {
     //3개의 변수 모두 각 segregation객체마다 하나의 같은 변수를 사용하게 되니 static을 처리해 준다.
-    private static House[][] city; 
+    private House[][] city; 
     private static int size = 30;
     private static double emptyRate = 0.25;
     
@@ -16,14 +16,14 @@ public class Segregation {
         for(int i = 0; i < size; i++) {
             for(int j = 0; j<size; j++) {
                 if (Math.random() < emptyRate) {
-                    city[i][j] = new House(i, j, Type.EMPTY);
+                    city[i][j] = new House(i, j, Type.EMPTY, this);
                 }
                 else {
                     if (Math.random() < 0.5) {
-                        city[i][j] = new House(i,j,Type.HEADS);	
+                        city[i][j] = new House(i,j,Type.HEADS, this);	
                     }
                     else {
-                        city[i][j] = new House(i,j,Type.TAILS);
+                        city[i][j] = new House(i,j,Type.TAILS, this);
                     }
                 }
             }
@@ -128,7 +128,7 @@ public class Segregation {
     public static int getSize() {
         return size;
     }
-    public static House[][] getCity() { 
+    public House[][] getCity() { 
         return city;
     }
     public static double getEmptyRate() {
