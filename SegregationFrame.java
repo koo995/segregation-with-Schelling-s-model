@@ -46,7 +46,7 @@ public class SegregationFrame extends JFrame {
         s = new Segregation(Segregation.getSize(), Segregation.getEmptyRate());
         s.updateState(tolerance, diversity);
         stepCount = 0;
-        makeSegregationDisp(Segregation.getCity());
+        makeSegregationDisp(s.getCity());
 
         //메인화면 밑의 data information에 대한 centerPanel구현
         centerPanel = new JPanel();
@@ -108,7 +108,7 @@ public class SegregationFrame extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 s = new Segregation(Segregation.getSize(), Segregation.getEmptyRate());
                 s.updateState(tolerance, diversity);
-                makeSegregationDisp(Segregation.getCity());
+                makeSegregationDisp(s.getCity());
                 stepCount = 0;
                 DataUpdate(s, stepCount);
             }
@@ -122,7 +122,7 @@ public class SegregationFrame extends JFrame {
                 for (int n = 0; n < 2000; n++) {
                     s.move();
                     s.updateState(tolerance, diversity);
-                    makeSegregationDisp(Segregation.getCity());
+                    makeSegregationDisp(s.getCity());
                     stepCount++;
                     DataUpdate(s, stepCount);
                     int[] counts = s.countStates();
@@ -139,7 +139,7 @@ public class SegregationFrame extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 s.move();
                 s.updateState(tolerance, diversity);
-                makeSegregationDisp(Segregation.getCity());
+                makeSegregationDisp(s.getCity());
                 stepCount++;
                 DataUpdate(s, stepCount);
             }

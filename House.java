@@ -11,20 +11,23 @@ public class House {
         {-1,0},{1,0},
         {-1,1},{0,1},{1,1}
     };
+    private Segregation segregation; 
 
-        // constructor
-    public House(int x, int y, Type type) { //각 house들은 본인의 좌표값과 본인의 type을 생성할때 받는다.
+    // constructor
+    //각 house들은 본인의 좌표값과 본인의 type을 생성할때 받는다.
+    public House(int x, int y, Type type, Segregation segregation) {
         this.x = x;
         this.y = y;
         this.type = type;
+        this.segregation = segregation;
     }
 
     public ArrayList<House> getNeighbors() { 
         neighbors = new ArrayList<House>(); 
         for(int[] step:steps) {
             int[] grid = validLocation(this.x-step[0], this.y-step[1]);
-            if (!Segregation.getCity()[grid[0]][grid[1]].isEmpty()) //각 이웃의 좌표중에서 집이 비어있지 않다면 이웃으로 추가해 준다.
-                neighbors.add(Segregation.getCity()[grid[0]][grid[1]]);
+            if (!this.getSegregation().getCity()[grid[0]][grid[1]].isEmpty()) //각 이웃의 좌표중에서 집이 비어있지 않다면 이웃으로 추가해 준다.
+                neighbors.add(this.getSegregation().getCity()[grid[0]][grid[1]]);
         }
         return neighbors;
     }
@@ -78,7 +81,12 @@ public class House {
         // return type
     public Type getType() {
         return this.type;
-    } 
+    }
+    
+    public Segregation getSegregation(){
+        return this.segregation;
+    }
+
     public boolean isEmpty() {
         return this.type == Type.EMPTY;
     }
