@@ -1,4 +1,4 @@
 # segregation-with-Schelling-s-model
-<h2> 수정할 것 </h2>
-반복문을 너무 많이 돌아 <br>
-이동한 이웃이 또 이동하는 케이스도 존재 <br>
+<h2> Schelling's model of segregation </h2>
+SegregationGUI.java 파일로 GUI실행 <br>
+Segregation.java 파일로 콘솔 실행 <br>
